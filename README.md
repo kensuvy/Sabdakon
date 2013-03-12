@@ -1,0 +1,4 @@
+Sabdakon
+========
+
+A dictionary client
