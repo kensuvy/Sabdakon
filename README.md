@@ -4,4 +4,4 @@ Sabdakon
 A dictionary client
 
 Not working yet.  
-Prototype coming soon.
+Prototype coming very soon.
