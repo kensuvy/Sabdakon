@@ -3,5 +3,5 @@ Sabdakon
 
 A dictionary client
 
-Not working.  
+Not working yet.  
 Prototype coming soon.
