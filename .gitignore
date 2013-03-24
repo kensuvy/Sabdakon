@@ -1,8 +1,8 @@
-*.class
-*.temp
-*.swp  
-
 # Package Files #
 *.jar
 *.war
 *.ear
+
+*.class
+*.temp
+*.swp
