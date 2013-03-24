@@ -22,20 +22,46 @@
 */
 
 /*
-	Sabdakon.java
+	WiktionaryParser.java
 	
-	This is the main executable file.
+	This class gets the meaning from Wiktionary.org and formats it.
 */
 
-public class Sabdakon
+import java.net.*;
+import java.io.*;
+
+public class WiktionaryParser
 {
-	public static void main(String[] args)
+	private String searchWord;
+	private BufferedReader buffReader;
+
+	public WiktionaryParser(String word)
 	{
-		UI sabGui = new sabgui();
-		sabGui.setDefaultCloseOperation( sabGui.EXIT_ON_CLOSE );
-		sabGui.setSize( 800, 600);
-		simple.setVisible( true );
+		searchWord = word;
+	}
+	
+	private void getPage()
+	{
+		URL searchUrl;
+		
+		try
+		{
+			url = new URL("http://en.m.wiktionary.org/wiki/"+searchWord);
+			URLConnetion connection = url.openConnection();
+			buffReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+
+		}
+		catch (MalformerURLException error)
+		{
+			error.printStackTrace();
+		}
+		catch (IOException error)
+		{
+			error.printStackTrace();
+		}
+	}
+	private void formatPage()
+	{
 		
 	}
 }
-
