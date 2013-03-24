@@ -33,7 +33,8 @@ import java.io.*;
 public class WiktionaryParser
 {
 	private String searchWord;
-	private BufferedReader buffReader;
+	private BufferedReader receivedText;
+	private BufferedReader formatedText;
 
 	public WiktionaryParser(String word)
 	{
