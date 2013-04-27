@@ -39,26 +39,27 @@ import java.io.IOException;
 
 public class SabdakonCLI
 {
-	static void queryServer(searchWord)
+	static void queryServer(String searchWord)
 	{
 		URL wordUrl;
 
 		try
 		{
-			url = new URL("http://www.wired.com/");
-			URLConnection connection = url.openConnection();	//opens new connection the URL
+			wordUrl = new URL("http://www.wired.com/");
+			URLConnection connection = wordUrl.openConnection();	//opens new connection the URL
 
-			//opens the stream and puts it into a BufferedReader
-			Buffered Reader buffReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			BufferedReader buffReader = new BufferedReader(new InputStreamReader(connection.getInputStream())); //opens the stream and puts it into a BufferedReader
+
 		}
-		catch(MalformedURLException e)
+		catch(MalformedURLException e)	//thrown by URL()
 		{
 			e.printStackTrace();
 		}
-		catch(IOException e)
+		catch(IOException e)		//thrown by openConnection()
 		{
 			e.printStackTrace();
 		}
+
 	}
 
 	public static void main(String[] args)
