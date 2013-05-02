@@ -1,7 +1,6 @@
 Sabdakon
 ========
 
-A dictionary client
+A dictionary app that uses the [DuckDuckGo API](http://api.duckduckgo.com/api).
 
-Not working yet.  
-Prototype coming very soon.
+
