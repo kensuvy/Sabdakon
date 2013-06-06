@@ -27,7 +27,7 @@
   	This is the module that communicates with DuckDuckGo. 
 */
 
-import java.util.Scanner;		//for getting input from commandline
+import java.util.Scanner;		//for getting input from a source
 import java.net.URL;			//class representing a URL
 import java.net.URLConnection;		//abstract class, represents connection between app and URL
 import java.net.MalformedURLException;
@@ -78,7 +78,7 @@ public class SabdDuck
 		int startIndex = 0;
 		int stopIndex = 0;
 
-		formattedOutput+="\n\n"+word+"\n_______________\n\n";
+		formattedOutput+="\n\nDuckDuckGo:\n\n"+word+": ";
 
 		if(result.indexOf("\"\"")>=0)
 		{
@@ -98,6 +98,18 @@ public class SabdDuck
 		}
 
 
+	}
+
+	public void setWord(String s)
+	{
+		word = s;
+	}
+
+	public String getFormattedOutput()
+	{
+		getFromURL(word);
+		formatResult();
+		return formattedOutput;
 	}
 
 }

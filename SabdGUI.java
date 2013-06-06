@@ -84,6 +84,7 @@ public class SabdGUI extends JFrame
 
 		TextFieldHandler handler = new TextFieldHandler();
 		wordField.addActionListener(handler);
+		findButton.addActionListener(handler);
 
 	}
 
@@ -91,10 +92,10 @@ public class SabdGUI extends JFrame
 	{
 		public void actionPerformed(ActionEvent event)
 		{
-			if(event.getSource() == wordField)
+			if((event.getSource() == wordField)||(event.getSource() == findButton))
 			{
 				SabdDuck sDuck = new SabdDuck();
-				sDuck.setWord(event.getActionCommand());
+				sDuck.setWord(wordField.getText());
 				resultArea.insert(sDuck.getFormattedOutput(), 0);
 			}
 		}

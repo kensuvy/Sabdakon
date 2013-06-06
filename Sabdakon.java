@@ -24,5 +24,16 @@
 /*	
  	Sabdakon.java	
 
-  	This is a the main executable file.
+  	This is the main executable file.
 */
+
+public class Sabdakon
+{
+	public static void main(String[] args)
+	{
+		SabdGUI sGUI = new SabdGUI();
+		sGUI.setDefaultCloseOperation(sGUI.EXIT_ON_CLOSE);
+		sGUI.setSize(800, 600);
+		sGUI.setVisible(true);
+	}
+}
