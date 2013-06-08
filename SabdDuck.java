@@ -78,11 +78,11 @@ public class SabdDuck
 		int startIndex = 0;
 		int stopIndex = 0;
 
-		formattedOutput+="\n\nDuckDuckGo:\n\n"+word+": ";
+		formattedOutput+="<h2>DuckDuckGo</h2><b>"+word+"</b>: ";
 
 		if(result.indexOf("\"\"")>=0)
 		{
-			formattedOutput+="Error: Word Not Found.\n_______________\n\n";	
+			formattedOutput+="<b>Error: Word Not Found.</b>";	
 		}
 
 		else if(result.indexOf("Definition")>=0)
@@ -94,7 +94,7 @@ public class SabdDuck
 				formattedOutput+="\"";
 			}	
 			stopIndex=result.lastIndexOf("\",");
-			formattedOutput+=result.substring(startIndex, stopIndex)+"\"\n_______________\n\n";
+			formattedOutput+=result.substring(startIndex, stopIndex)+"\"<hr/>";
 		}
 
 

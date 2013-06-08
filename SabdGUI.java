@@ -28,7 +28,7 @@
 */
 
 import javax.swing.JFrame;
-import javax.swing.JTextArea;
+import javax.swing.JEditorPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.Box;
@@ -43,7 +43,9 @@ public class SabdGUI extends JFrame
 {
 	private JTextField wordField;
 	private JButton findButton;
-	private JTextArea resultArea;
+	private JEditorPane resultArea;
+	private String word;
+	private String displayText;
 
 	public SabdGUI()
 	{
@@ -71,7 +73,8 @@ public class SabdGUI extends JFrame
 		add(findButton, c);
 
 		Box resultBox = Box.createHorizontalBox();
-		resultArea = new JTextArea();
+		resultArea = new JEditorPane();
+		resultArea.setContentType("text/html");
 		resultArea.setEditable( false );
 		resultBox.add(resultArea);
 		c.fill = GridBagConstraints.BOTH;
@@ -94,9 +97,19 @@ public class SabdGUI extends JFrame
 		{
 			if((event.getSource() == wordField)||(event.getSource() == findButton))
 			{
+				word = wordField.getText();
+
+				displayText = "<html>";
+				
 				SabdDuck sDuck = new SabdDuck();
-				sDuck.setWord(wordField.getText());
-				resultArea.insert(sDuck.getFormattedOutput(), 0);
+				sDuck.setWord(word);
+				displayText += sDuck.getFormattedOutput();
+
+				SabdWord sWord = new SabdWord();
+				sWord.setWord(word);
+				displayText+=sWord.getFormattedOutput();
+
+				resultArea.setText(displayText);
 			}
 		}
 	}
