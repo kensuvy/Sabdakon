@@ -22,12 +22,12 @@
 */
 
 /*	
- 	SabdCLI.java	
+ 	SabdDuck.java	
 
-  	This is the module that communicates with DuckDuckGo. 
+  	This class receives data from DuckDuckGo.
 */
 
-import java.util.Scanner;		//for getting input from a source
+import java.util.Scanner;		//for getting input from commandline
 import java.net.URL;			//class representing a URL
 import java.net.URLConnection;		//abstract class, represents connection between app and URL
 import java.net.MalformedURLException;
@@ -35,16 +35,16 @@ import java.io.InputStreamReader;	//converts bytes to characters using a specifi
 import java.io.IOException;
 
 
-public class SabdDuck
+public class SabdWord
 {
 	private String word;
-	private String result;
+	private String meaning;
 	private String formattedOutput="";
 
 	private void getFromURL(String word)
 	{
 		URL url;
-		String urlstring = "http://api.duckduckgo.com/?q="+word+"&format=json&pretty=1"; 
+		String urlstring = "http://wordnetweb.princeton.edu/perl/webwn?s="+word+"&sub=Search+WordNet&o2=&o0=1&o8=1&o1=1&o7=&o5=&o9=&o6=&o3=&o4=&h=0"; 
 		try 
 		{
 			url = new URL(urlstring);
@@ -54,10 +54,7 @@ public class SabdDuck
                         Scanner urlContent = new Scanner(conn.getInputStream());
 			while(urlContent.hasNext())
 			{
-				result = urlContent.nextLine();
-				
-				if(result.indexOf("Definition")>=0)
-					break;
+				meaning += urlContent.nextLine();
 				
 			}
 		}
@@ -78,26 +75,22 @@ public class SabdDuck
 		int startIndex = 0;
 		int stopIndex = 0;
 
-		formattedOutput+="<h2>DuckDuckGo</h2><b>"+word+"</b>: ";
+		formattedOutput+="<h2>WordNet</h2>";
 
-		if(result.indexOf("\"\"")>=0)
+		if(meaning.indexOf("Your search did not return any results.")>=0)
 		{
-			formattedOutput+="<b>Error: Word Not Found.</b>";	
+			formattedOutput+="<b>"+word+": Error: Word Not Found</b>";
 		}
-
-		else if(result.indexOf("Definition")>=0)
-		{	
-			startIndex = result.indexOf("Definition")+14;
-			if(result.indexOf("definition:")>=0)
-			{
-				startIndex = result.indexOf("definition:")+12;
-				formattedOutput+="\"";
-			}	
-			stopIndex=result.lastIndexOf("\",");
-			formattedOutput+=result.substring(startIndex, stopIndex)+"\"<hr/>";
+		else 
+		{
+			if(meaning.indexOf("sentence\" </div>")>=0) 
+				startIndex = meaning.indexOf("sentence\" </div>")+16;
+			if(meaning.indexOf("</body>")>=0)
+				stopIndex = meaning.indexOf("</body>");
+			formattedOutput+=meaning.substring(startIndex, stopIndex)+"<hr/>";
+			formattedOutput = formattedOutput.replace("S:", " ");
 		}
-
-
+		
 	}
 
 	public void setWord(String s)
