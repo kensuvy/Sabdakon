@@ -22,9 +22,9 @@
 */
 
 /*	
- 	SabdDuck.java	
+ 	SabdWord.java	
 
-  	This class receives data from DuckDuckGo.
+  	This class receives data from WordNetWeb.
 */
 
 import java.util.Scanner;		//for getting input from commandline

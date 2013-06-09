@@ -99,11 +99,9 @@ public class SabdGUI extends JFrame
 			{
 				word = wordField.getText();
 
+				resultArea.setText("Loading");
+
 				displayText = "<html>";
-				
-				SabdDuck sDuck = new SabdDuck();
-				sDuck.setWord(word);
-				displayText += sDuck.getFormattedOutput();
 
 				SabdWord sWord = new SabdWord();
 				sWord.setWord(word);
