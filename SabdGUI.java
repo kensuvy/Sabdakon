@@ -32,6 +32,10 @@ import javax.swing.JEditorPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.Box;
+import javax.swing.JOptionPane;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JMenuBar;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionListener;
@@ -52,6 +56,36 @@ public class SabdGUI extends JFrame
 		super("Sabdakon");
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
+
+		JMenu fileMenu = new JMenu("File");
+		fileMenu.setMnemonic('F');
+		JMenuItem aboutItem = new JMenuItem("About");
+		aboutItem.setMnemonic('A');
+		aboutItem.addActionListener(
+			new ActionListener()
+			{
+				public void actionPerformed(ActionEvent event)
+				{
+					JOptionPane.showMessageDialog(SabdGUI.this, "Sabdakon", "About", JOptionPane.PLAIN_MESSAGE);
+				}
+			}
+		);
+		fileMenu.add(aboutItem);
+		JMenuItem exitItem = new JMenuItem("Exit");
+		exitItem.setMnemonic('E');
+		exitItem.addActionListener(
+			new ActionListener()
+			{
+				public void actionPerformed(ActionEvent event)
+				{
+					System.exit(0);
+				}
+			}
+		);
+		fileMenu.add(exitItem);
+		JMenuBar bar = new JMenuBar();
+		setJMenuBar( bar );
+		bar.add(fileMenu);
 
 		wordField = new JTextField();
 		Font wordBig = new Font ("san serif", Font.BOLD, 34);
