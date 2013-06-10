@@ -66,7 +66,9 @@ public class SabdGUI extends JFrame
 			{
 				public void actionPerformed(ActionEvent event)
 				{
-					JOptionPane.showMessageDialog(SabdGUI.this, "Sabdakon", "About", JOptionPane.PLAIN_MESSAGE);
+					JOptionPane.showMessageDialog(SabdGUI.this, 
+					"<html><center><h1>Sabdakon</h1><h6>version 1.0.0</h6></html>",
+					"About", JOptionPane.PLAIN_MESSAGE);
 				}
 			}
 		);

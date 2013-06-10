@@ -39,7 +39,7 @@ public class SabdWord
 {
 	private String word;
 	private String meaning;
-	private String formattedOutput="";
+	private String formattedOutput;
 
 	private void getFromURL(String word)
 	{
@@ -75,7 +75,7 @@ public class SabdWord
 		int startIndex = 0;
 		int stopIndex = 0;
 
-		formattedOutput+="<h2>WordNet</h2>";
+		formattedOutput="<h2>WordNet</h2>";
 
 		if(meaning.indexOf("Your search did not return any results.")>=0)
 		{
@@ -88,9 +88,8 @@ public class SabdWord
 			if(meaning.indexOf("</body>")>=0)
 				stopIndex = meaning.indexOf("</body>");
 			formattedOutput+=meaning.substring(startIndex, stopIndex)+"<hr/>";
-			formattedOutput = formattedOutput.replace("S:", " ");
+			formattedOutput = formattedOutput.replace("S:.", " ");
 		}
-		
 	}
 
 	public void setWord(String s)
