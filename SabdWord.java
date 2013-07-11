@@ -68,6 +68,8 @@ public class SabdWord
 		{
 			e.printStackTrace();
 		}
+		System.out.println("Data received from WordNetWeb...");
+
 	}
 
 	private void formatResult()
@@ -88,8 +90,15 @@ public class SabdWord
 			if(meaning.indexOf("</body>")>=0)
 				stopIndex = meaning.indexOf("</body>");
 			formattedOutput+=meaning.substring(startIndex, stopIndex)+"<hr/>";
-			formattedOutput = formattedOutput.replace("S:.", " ");
+			formattedOutput = formattedOutput.replace("S:", "");
+			while(formattedOutput.indexOf("<a ")>=0)
+			{	startIndex = formattedOutput.indexOf("<a ");
+				stopIndex = formattedOutput.indexOf(">", startIndex);
+				formattedOutput = formattedOutput.replace(formattedOutput.substring(startIndex, stopIndex+1), "");
+				formattedOutput = formattedOutput.replace("</a>", "");
+			}
 		}
+		System.out.println("Output generated from SabdWord...");
 	}
 
 	public void setWord(String s)
